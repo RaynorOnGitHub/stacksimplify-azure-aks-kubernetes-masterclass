@@ -96,8 +96,16 @@ az login
 # Install Azure AKS CLI
 az aks install-cli
 
-# Configure Cluster Creds (kube config)
-az aks get-credentials --resource-group aks-rg1 --name aksdemo1
+# Set the AZURE Subscription ID
+az account set --subscription <subscription-id-code-sequence>
+
+# Configure Cluster Creds (kube config) -- essential is 'overwrite-existing'
+az aks get-credentials --resource-group aks-rg1 --name aksdemo1 --overwrite-existing
+
+# In case the credentials can not be determined because the resource-group is not found
+# go to AZURE protal and to resource groups - click on the resource group of interest 
+# and look for cloud shell and cli on left side (!maybe visible only for new cluster)
+# TO BE VALIDATED !!
 
 # List AKS Nodes
 kubectl get nodes 
